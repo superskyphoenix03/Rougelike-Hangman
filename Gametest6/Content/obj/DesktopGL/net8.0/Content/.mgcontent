@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/super/source/New Repos/Rougelike-Hangman/Gametest6/Content/background.png</File>
+    <File>C:/Users/super/source/New Repos/Rougelike-Hangman/Gametest6/Content/button.png</File>
+    <File>C:/Users/super/source/New Repos/Rougelike-Hangman/Gametest6/Content/fadeTexture.png</File>
+    <File>C:/Users/super/source/New Repos/Rougelike-Hangman/Gametest6/Content/FontFile.spritefont</File>
+    <File>C:/Users/super/source/New Repos/Rougelike-Hangman/Gametest6/Content/HangmanPart1.png</File>
+    <File>C:/Users/super/source/New Repos/Rougelike-Hangman/Gametest6/Content/HangmanPart2.png</File>
+    <File>C:/Users/super/source/New Repos/Rougelike-Hangman/Gametest6/Content/HangmanPart3.png</File>
+    <File>C:/Users/super/source/New Repos/Rougelike-Hangman/Gametest6/Content/HangmanPart4.png</File>
+    <File>C:/Users/super/source/New Repos/Rougelike-Hangman/Gametest6/Content/HangmanPart5.png</File>
+    <File>C:/Users/super/source/New Repos/Rougelike-Hangman/Gametest6/Content/HangmanPart6.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
