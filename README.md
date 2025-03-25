@@ -1,3 +1,5 @@
+//Update 3/24/2025 : I switched to MonoGame around the 16th however I did not realise it had no support for webapps. I am still working on this, srecreating the project in OpenSilver. I will try and post a functional version on git when I get it resembling working. I promise I've been hard at work trying to figure this out. Thank you for your time.
+
 
 Roguelike Hangman Game Concept
 1. Core Gameplay:

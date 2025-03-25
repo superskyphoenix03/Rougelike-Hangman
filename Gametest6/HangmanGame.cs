@@ -431,7 +431,8 @@ namespace GameTest6
                     if (response.IsSuccessStatusCode)
                     {
                         string jsonResponse = await response.Content.ReadAsStringAsync();
-                        var data = JsonSerializer.Deserialize<List<string>>(jsonResponse);
+                        var data = JsonSerializer.Deserialize<ApiResponse>(jsonResponse)?.words;
+
                         if (data != null && data.Count > 0 && !string.IsNullOrWhiteSpace(data[0]))
                         {
                             Console.WriteLine($"Fetched word: {data[0]}"); // Debug statement
@@ -589,4 +590,8 @@ namespace GameTest6
             public string word { get; set; }
         }
     }
+}
+public class ApiResponse
+{
+    public List<string> words { get; set; }
 }
