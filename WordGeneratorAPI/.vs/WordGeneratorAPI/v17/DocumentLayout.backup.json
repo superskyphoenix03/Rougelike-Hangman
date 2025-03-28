@@ -3,32 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\super\\source\\New Repos\\Rougelike-Hangman\\WordGeneratorAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\controllers\\wordcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:controllers\\wordcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\controllers\\gamecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:controllers\\gamecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\controllers\\scorecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:controllers\\scorecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\models\\gamemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:models\\gamemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\score.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:score.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\controllers\\wordcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:controllers\\wordcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\controllers\\scorecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:controllers\\scorecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|c:\\users\\super\\source\\new repos\\rougelike-hangman\\wordgeneratorapi\\models\\gamemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293BCEA3-AE8B-4896-90BE-2345079F9EC0}|WordGeneratorAPI.csproj|solutionrelative:models\\gamemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -63,7 +63,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "GameModels.cs",
               "DocumentMoniker": "C:\\Users\\super\\source\\New Repos\\Rougelike-Hangman\\WordGeneratorAPI\\Models\\GameModels.cs",
               "RelativeDocumentMoniker": "Models\\GameModels.cs",
@@ -71,8 +71,7 @@
               "RelativeToolTip": "Models\\GameModels.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T05:08:35.597Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T05:08:35.597Z"
             },
             {
               "$type": "Document",
@@ -89,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "ScoreControllers.cs",
               "DocumentMoniker": "C:\\Users\\super\\source\\New Repos\\Rougelike-Hangman\\WordGeneratorAPI\\Controllers\\ScoreControllers.cs",
               "RelativeDocumentMoniker": "Controllers\\ScoreControllers.cs",
@@ -102,33 +101,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "WordControllers.cs",
               "DocumentMoniker": "C:\\Users\\super\\source\\New Repos\\Rougelike-Hangman\\WordGeneratorAPI\\Controllers\\WordControllers.cs",
               "RelativeDocumentMoniker": "Controllers\\WordControllers.cs",
               "ToolTip": "C:\\Users\\super\\source\\New Repos\\Rougelike-Hangman\\WordGeneratorAPI\\Controllers\\WordControllers.cs",
               "RelativeToolTip": "Controllers\\WordControllers.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAADUAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-27T22:20:03.189Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Startup.cs",
               "DocumentMoniker": "C:\\Users\\super\\source\\New Repos\\Rougelike-Hangman\\WordGeneratorAPI\\Startup.cs",
               "RelativeDocumentMoniker": "Startup.cs",
-              "ToolTip": "C:\\Users\\super\\source\\New Repos\\Rougelike-Hangman\\WordGeneratorAPI\\Startup.cs*",
-              "RelativeToolTip": "Startup.cs*",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAiwDUAAAABAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\super\\source\\New Repos\\Rougelike-Hangman\\WordGeneratorAPI\\Startup.cs",
+              "RelativeToolTip": "Startup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-27T22:18:30.297Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\super\\source\\New Repos\\Rougelike-Hangman\\WordGeneratorAPI\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",

@@ -39,13 +39,13 @@ const elements = {
     leaderboard: document.getElementById("leaderboard"),
     leaderboardTableBody: document.getElementById("leaderboard-table").querySelector("tbody"),
     playAgainButton: document.getElementById("play-again-button"),
-    continueButton: document.getElementById("continue") // Added continue button element
+    continueButton: document.getElementById("continue")
 };
 
 const apiEndpoints = {
     fetchRandomWord: async () => {
         try {
-            const response = await fetch(`${apiUrl}?type=${difficultyLevel}&length=${getDesiredWordLength()}`);
+            const response = await fetch(`${apiUrl}?difficulty=${difficultyLevel}`);
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const word = await response.json();
             nextWord = word.text.toLowerCase();
@@ -116,15 +116,6 @@ const apiEndpoints = {
             console.error("Failed to fetch game replays:", error);
         }
     }
-};
-
-const getDesiredWordLength = () => {
-    if (completedWords < 3) return 3;
-    if (difficultyLevel === "common") return getRandomInt(3, 5);
-    if (difficultyLevel === "easy") return getRandomInt(4, 6);
-    if (difficultyLevel === "medium") return getRandomInt(6, 8);
-    if (difficultyLevel === "hard") return getRandomInt(8, 12);
-    return 3;
 };
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
