@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "a8IOI4XFQ+bkQ7MYVOfbDjeXpDlhrCT+8xIsnMnhB/c=",
+  "Source": "WordGeneratorAPI",
+  "BasePath": "_content/WordGeneratorAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
