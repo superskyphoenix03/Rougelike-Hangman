@@ -64,7 +64,6 @@ C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WordGeneratorAPI.props
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WordGeneratorAPI.props
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGene.3185C09B.Up2Date
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.dll
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\refint\WordGeneratorAPI.dll

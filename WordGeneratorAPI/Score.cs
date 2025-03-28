@@ -1,4 +1,7 @@
-﻿namespace WordGeneratorAPI
+﻿using System;
+using System.Collections.Generic;
+
+namespace WordGeneratorAPI
 {
     public class Score
     {

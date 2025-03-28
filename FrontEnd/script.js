@@ -1,6 +1,9 @@
 const apiUrl = "http://localhost:5127/word"; // Updated API URL
 const scoreApiUrl = "http://localhost:5127/api/scores"; // Score API URL
 const leaderboardApiUrl = "http://localhost:5127/api/leaderboard"; // Leaderboard API URL
+const achievementsApiUrl = "http://localhost:5127/api/game/achievements"; // Achievements API URL
+const dailyChallengesApiUrl = "http://localhost:5127/api/game/daily-challenges"; // Daily Challenges API URL
+const gameReplaysApiUrl = "http://localhost:5127/api/game/game-replays"; // Game Replays API URL
 
 let selectedWord = "";
 let nextWord = "";
@@ -37,21 +40,9 @@ const leaderboardTableBody = document.getElementById("leaderboard-table").queryS
 const playAgainButton = document.getElementById("play-again-button");
 
 async function fetchRandomWord() {
-    let wordLength;
-    if (completedWords < 3) {
-        wordLength = 3;
-    } else if (difficultyLevel === "common") {
-        wordLength = getRandomInt(3, 5);
-    } else if (difficultyLevel === "easy") {
-        wordLength = getRandomInt(4, 6);
-    } else if (difficultyLevel === "medium") {
-        wordLength = getRandomInt(6, 8);
-    } else if (difficultyLevel === "hard") {
-        wordLength = getRandomInt(8, 12);
-    }
-
+    const wordLength = getDesiredWordLength();
     try {
-        const response = await fetch(`${apiUrl}?difficulty=${difficultyLevel}&theme=fruits&length=${wordLength}`);
+        const response = await fetch(`${apiUrl}?type=${difficultyLevel}&length=${wordLength}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -62,6 +53,21 @@ async function fetchRandomWord() {
         console.error("Failed to fetch the word:", error);
         messageElement.innerHTML = "Failed to fetch the word. Please try again.";
     }
+}
+
+function getDesiredWordLength() {
+    if (completedWords < 3) {
+        return 3;
+    } else if (difficultyLevel === "common") {
+        return getRandomInt(3, 5);
+    } else if (difficultyLevel === "easy") {
+        return getRandomInt(4, 6);
+    } else if (difficultyLevel === "medium") {
+        return getRandomInt(6, 8);
+    } else if (difficultyLevel === "hard") {
+        return getRandomInt(8, 12);
+    }
+    return 3;
 }
 
 function getRandomInt(min, max) {
@@ -481,9 +487,9 @@ function submitScore() {
     .catch(error => {
         console.error("Failed to submit score:", error);
     });
-}
-
-function displayLeaderboard() {
+    }
+    
+    function displayLeaderboard() {
     fetch(leaderboardApiUrl)
     .then(response => {
         if (!response.ok) {
@@ -510,12 +516,12 @@ function displayLeaderboard() {
     .catch(error => {
         console.error("Failed to fetch leaderboard:", error);
     });
-}
-
-guessButton.addEventListener("click", () => {
+    }
+    
+    guessButton.addEventListener("click", () => {
     const guess = guessInput.value.toLowerCase();
     guessInput.value = "";
-
+    
     if (guess && !guessedLetters.includes(guess)) {
         guessedLetters.push(guess);
         if (!selectedWord.includes(guess)) {
@@ -527,14 +533,14 @@ guessButton.addEventListener("click", () => {
         updateWordDisplay();
         checkGameStatus();
     }
-});
-
-document.getElementById("continue").addEventListener("click", () => {
+    });
+    
+    document.getElementById("continue").addEventListener("click", () => {
     hideShop();
     prepareNextWord();
-});
-
-tryAgainButton.addEventListener("click", () => {
+    });
+    
+    tryAgainButton.addEventListener("click", () => {
     hp = maxHp;
     wordCoins = 0;
     difficultyLevel = "common";
@@ -553,13 +559,63 @@ tryAgainButton.addEventListener("click", () => {
     timerElement.innerHTML = `Time: ${timer}`;
     updateLevelDisplay(); // Update level display
     prepareNextWord();
-});
-
-submitScoreButton.addEventListener("click", submitScore);
-playAgainButton.addEventListener("click", () => {
+    });
+    
+    submitScoreButton.addEventListener("click", submitScore);
+    playAgainButton.addEventListener("click", () => {
     tryAgainButton.click(); // Trigger try again logic
-});
-
-coinsElement.innerHTML = `Coins: ${wordCoins}`;
-fetchRandomWord(); // Fetch the initial word for the game
-prepareNextWord(); // Prepare the first word
+    });
+    
+    coinsElement.innerHTML = `Coins: ${wordCoins}`;
+    fetchRandomWord(); // Fetch the initial word for the game
+    prepareNextWord(); // Prepare the first word
+    
+    // Fetch Achievements
+    async function fetchAchievements() {
+    try {
+        const response = await fetch(achievementsApiUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const achievements = await response.json();
+        // Display achievements (add your own logic here)
+        console.log(achievements);
+    } catch (error) {
+        console.error("Failed to fetch achievements:", error);
+    }
+    }
+    
+    // Fetch Daily Challenges
+    async function fetchDailyChallenges() {
+    try {
+        const response = await fetch(dailyChallengesApiUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const challenges = await response.json();
+        // Display daily challenges (add your own logic here)
+        console.log(challenges);
+    } catch (error) {
+        console.error("Failed to fetch daily challenges:", error);
+    }
+    }
+    
+    // Fetch Game Replays
+    async function fetchGameReplays() {
+    try {
+        const response = await fetch(gameReplaysApiUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const replays = await response.json();
+        // Display game replays (add your own logic here)
+        console.log(replays);
+    } catch (error) {
+        console.error("Failed to fetch game replays:", error);
+    }
+    }
+    
+    // Call the new functions to fetch data
+    fetchAchievements();
+    fetchDailyChallenges();
+    fetchGameReplays();
