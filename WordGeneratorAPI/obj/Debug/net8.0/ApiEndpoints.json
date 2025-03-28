@@ -1,15 +1,15 @@
 [
   {
-    "ContainingType": "WordGeneratorAPI.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
+    "ContainingType": "WordGeneratorAPI.Controllers.GameController",
+    "Method": "GetAchievements",
+    "RelativePath": "api/Game/achievements",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[WordGeneratorAPI.WeatherForecast, WordGeneratorAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[WordGeneratorAPI.Models.Achievement, WordGeneratorAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -17,11 +17,257 @@
         ],
         "StatusCode": 200
       }
-    ],
-    "EndpointName": "GetWeatherForecast"
+    ]
   },
   {
-    "ContainingType": "RandomWordGeneratorApi.Controllers.WordController",
+    "ContainingType": "WordGeneratorAPI.Controllers.GameController",
+    "Method": "AddAchievement",
+    "RelativePath": "api/Game/achievements",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "achievement",
+        "Type": "WordGeneratorAPI.Models.Achievement",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WordGeneratorAPI.Models.Achievement",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WordGeneratorAPI.Controllers.GameController",
+    "Method": "GetDailyChallenges",
+    "RelativePath": "api/Game/daily-challenges",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[WordGeneratorAPI.Models.DailyChallenge, WordGeneratorAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WordGeneratorAPI.Controllers.GameController",
+    "Method": "AddDailyChallenge",
+    "RelativePath": "api/Game/daily-challenges",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "challenge",
+        "Type": "WordGeneratorAPI.Models.DailyChallenge",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WordGeneratorAPI.Models.DailyChallenge",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WordGeneratorAPI.Controllers.GameController",
+    "Method": "GetGameReplays",
+    "RelativePath": "api/Game/game-replays",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[WordGeneratorAPI.Models.GameReplay, WordGeneratorAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WordGeneratorAPI.Controllers.GameController",
+    "Method": "AddGameReplay",
+    "RelativePath": "api/Game/game-replays",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "replay",
+        "Type": "WordGeneratorAPI.Models.GameReplay",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WordGeneratorAPI.Models.GameReplay",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WordGeneratorAPI.Controllers.ScoreController",
+    "Method": "GetScores",
+    "RelativePath": "api/Score",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[WordGeneratorAPI.Score, WordGeneratorAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WordGeneratorAPI.Controllers.ScoreController",
+    "Method": "AddScore",
+    "RelativePath": "api/Score",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "score",
+        "Type": "WordGeneratorAPI.Score",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WordGeneratorAPI.Score",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WordGeneratorAPI.Controllers.ScoreController",
+    "Method": "GetScore",
+    "RelativePath": "api/Score/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WordGeneratorAPI.Score",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WordGeneratorAPI.Controllers.ScoreController",
+    "Method": "UpdateScore",
+    "RelativePath": "api/Score/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedScore",
+        "Type": "WordGeneratorAPI.Score",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WordGeneratorAPI.Controllers.ScoreController",
+    "Method": "DeleteScore",
+    "RelativePath": "api/Score/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WordGeneratorAPI.Controllers.ScoreController",
+    "Method": "GetLeaderboard",
+    "RelativePath": "api/Score/Leaderboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "WordGeneratorAPI.Leaderboard",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WordGeneratorAPI.Controllers.WordController",
     "Method": "GetRandomWord",
     "RelativePath": "Word",
     "HttpMethod": "GET",
@@ -37,11 +283,16 @@
         "Name": "length",
         "Type": "System.Int32",
         "IsRequired": false
+      },
+      {
+        "Name": "difficulty",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "RandomWordGeneratorApi.Controllers.WordResponse",
+        "Type": "WordGeneratorAPI.Controllers.WordResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",

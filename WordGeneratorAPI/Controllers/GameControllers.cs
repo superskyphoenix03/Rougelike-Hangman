@@ -10,6 +10,7 @@ namespace WordGeneratorAPI.Controllers
     [Route("api/[controller]")]
     public class GameController : ControllerBase
     {
+        // In-memory lists for simplicity. Replace with a database in a real application.
         private static List<Achievement> Achievements = new List<Achievement>();
         private static List<DailyChallenge> DailyChallenges = new List<DailyChallenge>();
         private static List<GameReplay> GameReplays = new List<GameReplay>();
