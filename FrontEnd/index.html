@@ -11,37 +11,42 @@
         <h1>Roguelike Hangman</h1>
         <div id="word"></div>
         <div id="theme"></div>
+        <div id="level">Level: 1</div>
         <div id="message"></div>
         <input type="text" id="guess-input" maxlength="1" placeholder="Enter a letter">
         <button id="guess-button">Guess</button>
-        <div id="lives">Lives: 5</div>
+        <div id="hp">HP: 50</div>
+        <div id="lives">Lives: 3</div>
         <div id="coins">Coins: 0</div>
+        <div id="timer">Time: 60</div>
         <button id="try-again-button" style="display:none;">Try Again</button>
     </div>
     <div id="shop" style="display:none;">
         <h2>Shop</h2>
-        <button id="buy-hint">Buy Hint (5 Coins)</button>
-        <button id="buy-life">Buy Extra Life (10 Coins)</button>
-        <button id="gamble">Gamble (5 Coins)</button>
-        <button id="reveal-letter">Reveal a Letter (8 Coins)</button>
-        <button id="skip-word">Skip Word (15 Coins)</button>
-        <button id="double-coins">Double Coins on Next Word (20 Coins)</button>
-        <button id="halve-lives-lost">Halve Lives Lost on Next Incorrect Guess (12 Coins)</button>
-        <button id="extra-guess">Extra Guess (6 Coins)</button>
-        <button id="freeze-time">Freeze Time (10 Coins)</button>
-        <button id="slow-motion">Slow Motion (10 Coins)</button>
-        <button id="reduce-word-length">Reduce Word Length (15 Coins)</button>
-        <button id="increase-word-length">Increase Word Length (10 Coins)</button>
-        <button id="reveal-theme">Reveal Theme (5 Coins)</button>
-        <button id="reveal-vowel">Reveal a Vowel (7 Coins)</button>
-        <button id="reveal-consonant">Reveal a Consonant (7 Coins)</button>
-        <button id="extra-life-2">Buy Extra Life (20 Coins)</button>
-        <button id="extra-hint">Buy Extra Hint (5 Coins)</button>
-        <button id="reveal-first-letter">Reveal First Letter (5 Coins)</button>
-        <button id="reveal-last-letter">Reveal Last Letter (5 Coins)</button>
-        <button id="reset-lives">Reset Lives (30 Coins)</button>
-        <!-- Add more buttons here as needed -->
+        <div id="shop-options"></div>
         <button id="continue">Continue</button>
+    </div>
+    <div id="leaderboard-form" style="display:none;">
+        <h2>Game Over</h2>
+        <p>Submit your score to the leaderboard</p>
+        <input type="text" id="player-name" placeholder="Enter your name">
+        <button id="submit-score-button">Submit Score</button>
+    </div>
+    <div id="leaderboard" style="display:none;">
+        <h2>Leaderboard</h2>
+        <table id="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Level</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button id="play-again-button">Play Again</button>
     </div>
     <script src="script.js"></script>
 </body>

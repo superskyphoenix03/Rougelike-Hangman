@@ -1,4 +1,6 @@
 const apiUrl = "http://localhost:5127/word"; // Updated API URL
+const scoreApiUrl = "http://localhost:5127/api/scores"; // Score API URL
+const leaderboardApiUrl = "http://localhost:5127/api/leaderboard"; // Leaderboard API URL
 
 let selectedWord = "";
 let nextWord = "";
@@ -16,6 +18,7 @@ let timerInterval;
 
 const wordElement = document.getElementById("word");
 const themeElement = document.getElementById("theme");
+const levelElement = document.getElementById("level");
 const messageElement = document.getElementById("message");
 const guessInput = document.getElementById("guess-input");
 const guessButton = document.getElementById("guess-button");
@@ -26,6 +29,12 @@ const timerElement = document.getElementById("timer");
 const shopElement = document.getElementById("shop");
 const shopOptionsElement = document.getElementById("shop-options");
 const tryAgainButton = document.getElementById("try-again-button");
+const leaderboardForm = document.getElementById("leaderboard-form");
+const playerNameInput = document.getElementById("player-name");
+const submitScoreButton = document.getElementById("submit-score-button");
+const leaderboardElement = document.getElementById("leaderboard");
+const leaderboardTableBody = document.getElementById("leaderboard-table").querySelector("tbody");
+const playAgainButton = document.getElementById("play-again-button");
 
 async function fetchRandomWord() {
     let wordLength;
@@ -67,6 +76,10 @@ function updateThemeDisplay() {
     themeElement.innerHTML = `Theme: ${selectedTheme}`;
 }
 
+function updateLevelDisplay() {
+    levelElement.innerHTML = `Level: ${completedWords + 1}`;
+}
+
 function checkGameStatus() {
     if (!wordElement.innerHTML.includes("_")) {
         messageElement.innerHTML = "Congratulations! You guessed the word!";
@@ -87,12 +100,14 @@ function checkGameStatus() {
             messageElement.innerHTML = `Game Over! The word was "${selectedWord}".`;
             guessButton.disabled = true;
             tryAgainButton.style.display = "block";
+            leaderboardForm.style.display = "block"; // Show the leaderboard form
         }
     } else if (timer <= 0) {
         clearInterval(timerInterval);
         messageElement.innerHTML = `Game Over! The word was "${selectedWord}".`;
         guessButton.disabled = true;
         tryAgainButton.style.display = "block";
+        leaderboardForm.style.display = "block"; // Show the leaderboard form
     }
 }
 
@@ -117,9 +132,11 @@ function updateDifficulty() {
     } else if (difficultyLevel === "medium" && completedWords >= 9) {
         difficultyLevel = "hard";
     }
+    updateLevelDisplay(); // Update the level display
 }
 
-function prepareNextWord() {
+async function prepareNextWord() {
+    await fetchRandomWord(); // Ensure the word is fetched before proceeding
     selectedWord = nextWord;
     selectedTheme = nextTheme;
     guessedLetters = [];
@@ -127,11 +144,11 @@ function prepareNextWord() {
     timerElement.innerHTML = `Time: ${timer}`;
     updateWordDisplay();
     updateThemeDisplay();
-    fetchRandomWord(); // Fetch the word for the next round
     startTimer();
 }
 
 function startTimer() {
+    console.log("Starting Timer...");
     clearInterval(timerInterval);
     timerInterval = setInterval(() => {
         timer--;
@@ -146,6 +163,7 @@ function addTime(seconds) {
     timer += seconds;
     timerElement.innerHTML = `Time: ${timer}`;
 }
+
 function randomizeShopOptions() {
     const shopOptions = [
         { id: "buy-hint", text: "Buy Hint (5 Coins)", cost: 5, action: buyHint },
@@ -434,6 +452,66 @@ function resetLives() {
     }
 }
 
+function submitScore() {
+    const scoreData = {
+        UserName: playerNameInput.value || "Anonymous", // Use player name or Anonymous
+        Points: wordCoins,
+        Level: completedWords + 1, // Include the level
+        DateAchieved: new Date().toISOString()
+    };
+
+    fetch(scoreApiUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(scoreData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log("Score submitted successfully:", data);
+        leaderboardForm.style.display = "none"; // Hide the form after submission
+        displayLeaderboard(); // Show the leaderboard after submission
+    })
+    .catch(error => {
+        console.error("Failed to submit score:", error);
+    });
+}
+
+function displayLeaderboard() {
+    fetch(leaderboardApiUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        leaderboardTableBody.innerHTML = ""; // Clear existing leaderboard
+        data.forEach((entry, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${entry.UserName}</td>
+                <td>${entry.Points}</td>
+                <td>${entry.Level}</td>
+                <td>${new Date(entry.DateAchieved).toLocaleString()}</td>
+            `;
+            leaderboardTableBody.appendChild(row);
+        });
+        leaderboardElement.style.display = "block"; // Show leaderboard
+        playAgainButton.style.display = "block"; // Show play again button
+    })
+    .catch(error => {
+        console.error("Failed to fetch leaderboard:", error);
+    });
+}
+
 guessButton.addEventListener("click", () => {
     const guess = guessInput.value.toLowerCase();
     guessInput.value = "";
@@ -465,13 +543,21 @@ tryAgainButton.addEventListener("click", () => {
     lives = 3;
     guessButton.disabled = false;
     tryAgainButton.style.display = "none";
+    leaderboardForm.style.display = "none";
+    leaderboardElement.style.display = "none";
     messageElement.innerHTML = "";
     hpElement.innerHTML = `HP: ${hp}`;
     livesElement.innerHTML = `Lives: ${lives}`;
     coinsElement.innerHTML = `Coins: ${wordCoins}`;
     timer = 60;
     timerElement.innerHTML = `Time: ${timer}`;
+    updateLevelDisplay(); // Update level display
     prepareNextWord();
+});
+
+submitScoreButton.addEventListener("click", submitScore);
+playAgainButton.addEventListener("click", () => {
+    tryAgainButton.click(); // Trigger try again logic
 });
 
 coinsElement.innerHTML = `Coins: ${wordCoins}`;

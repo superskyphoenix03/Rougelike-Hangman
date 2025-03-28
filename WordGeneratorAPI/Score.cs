@@ -1,13 +1,15 @@
-namespace WordGeneratorAPI
+﻿namespace WordGeneratorAPI
 {
-    public class WeatherForecast
+    public class Score
     {
-        public DateOnly Date { get; set; }
+        public int Id { get; set; } // Unique identifier for each score
+        public string PlayerName { get; set; } // Name of the player
+        public int Points { get; set; } // Points scored by the player
+        public DateTime DateAchieved { get; set; } // Date when the score was achieved
+    }
 
-        public int TemperatureC { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-
-        public string? Summary { get; set; }
+    public class Leaderboard
+    {
+        public List<Score> Scores { get; set; } = new List<Score>();
     }
 }
