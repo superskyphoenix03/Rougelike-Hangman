@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.Sqlite; // Import SQLite namespace
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace WordGeneratorAPI.Controllers
 {
@@ -9,56 +12,104 @@ namespace WordGeneratorAPI.Controllers
     [Route("[controller]")]
     public class WordController : ControllerBase
     {
-        private static readonly Dictionary<string, (string[] Words, string Hint)> WordCategories = new Dictionary<string, (string[], string)>
+        private readonly string _connectionString = "Data Source=WordsDatabase.db";
+        private readonly string _logFilePath = "Logs/WordRequests.log";
+
+        public WordController()
         {
-            { "common", (new[] { "cat", "dog", "bat", "rat", "sun", "fun", "run", "fan", "cow", "pig" }, "Common words used in daily life") },
-            { "fruits", (new[] { "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon" }, "Various kinds of fruits") },
-            { "animals", (new[] { "elephant", "fox", "giraffe", "hippopotamus", "iguana", "jaguar", "kangaroo", "lion", "monkey", "newt" }, "Names of animals") },
-            { "colors", (new[] { "red", "blue", "green", "yellow", "orange", "purple", "brown", "pink", "black", "white" }, "Names of colors") },
-            { "countries", (new[] { "argentina", "brazil", "canada", "denmark", "egypt", "france", "germany", "hungary", "india", "japan" }, "Names of countries") },
-            { "occupations", (new[] { "doctor", "engineer", "teacher", "nurse", "pilot", "chef", "artist", "musician", "writer", "dentist" }, "Various occupations") },
-            { "sports", (new[] { "soccer", "basketball", "tennis", "cricket", "hockey", "baseball", "rugby", "golf", "swimming", "cycling" }, "Different types of sports") },
-            { "instruments", (new[] { "piano", "guitar", "drums", "violin", "flute", "saxophone", "trumpet", "cello", "harp", "clarinet" }, "Musical instruments") },
-            { "vehicles", (new[] { "car", "truck", "bus", "motorcycle", "bicycle", "scooter", "airplane", "helicopter", "boat", "submarine" }, "Different types of vehicles") },
-            { "household", (new[] { "table", "chair", "sofa", "bed", "lamp", "desk", "cupboard", "shelf", "mirror", "rug" }, "Common household items") },
-            { "clothing", (new[] { "shirt", "pants", "dress", "skirt", "jacket", "coat", "hat", "scarf", "gloves", "socks" }, "Types of clothing") }
-        };
-
-        [HttpGet]
-        public ActionResult<WordResponse> GetRandomWord([FromQuery] string type = "common", [FromQuery] int length = 3, [FromQuery] string difficulty = "easy")
-        {
-            var random = new Random();
-            if (!WordCategories.ContainsKey(type))
-            {
-                return BadRequest("Invalid word type. Please use a valid category.");
-            }
-
-            var words = WordCategories[type].Words;
-            var hint = WordCategories[type].Hint;
-
-            var filteredWords = words.Where(word => word.Length == length && GetWordDifficulty(word) == difficulty).ToList();
-
-            if (!filteredWords.Any())
-            {
-                return NotFound("No words found with the specified criteria.");
-            }
-
-            var randomWord = filteredWords[random.Next(filteredWords.Count)];
-            return Ok(new WordResponse { Text = randomWord, Theme = type, Hint = hint });
+            // Ensure the log directory exists
+            Directory.CreateDirectory(Path.GetDirectoryName(_logFilePath));
         }
 
-        private string GetWordDifficulty(string word)
+        [HttpGet]
+        public async Task<ActionResult<WordResponse>> GetRandomWord([FromQuery] string type = "common", [FromQuery] int length = 3, [FromQuery] string difficulty = "easy")
         {
-            if (word.Length <= 4) return "easy";
-            if (word.Length <= 6) return "medium";
-            return "hard";
+            try
+            {
+                await using var connection = new SqliteConnection(_connectionString);
+                await connection.OpenAsync();
+
+                // Check if the word type exists
+                var categoryExists = await CheckCategoryExistsAsync(connection, type);
+                if (!categoryExists)
+                {
+                    LogRequest(type, length, difficulty, "Invalid word type");
+                    return BadRequest("Invalid word type. Please use a valid category.");
+                }
+
+                // Get words of the specified type, length, and difficulty
+                var words = await GetWordsAsync(connection, type, length, difficulty);
+
+                if (words.Count == 0)
+                {
+                    LogRequest(type, length, difficulty, "No words found");
+                    return NotFound("No words found with the specified criteria.");
+                }
+
+                var random = new Random();
+                var randomWord = words[random.Next(words.Count)];
+                var hint = await GetHintAsync(connection, type);
+
+                LogRequest(type, length, difficulty, "Success");
+                return Ok(new WordResponse { WordText = randomWord, WordTheme = type, WordHint = hint });
+            }
+            catch (Exception ex)
+            {
+                LogRequest(type, length, difficulty, $"Error: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        private async Task<bool> CheckCategoryExistsAsync(SqliteConnection connection, string type)
+        {
+            var command = connection.CreateCommand();
+            command.CommandText = "SELECT COUNT(*) FROM WordCategories WHERE Type = $type";
+            command.Parameters.AddWithValue("$type", type);
+
+            var count = (long)await command.ExecuteScalarAsync();
+            return count > 0;
+        }
+
+        private async Task<List<string>> GetWordsAsync(SqliteConnection connection, string type, int length, string difficulty)
+        {
+            var command = connection.CreateCommand();
+            command.CommandText = @"
+                SELECT Text FROM Words
+                WHERE Type = $type AND Length = $length AND Difficulty = $difficulty";
+            command.Parameters.AddWithValue("$type", type);
+            command.Parameters.AddWithValue("$length", length);
+            command.Parameters.AddWithValue("$difficulty", difficulty);
+
+            var words = new List<string>();
+            await using var reader = await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                words.Add(reader.GetString(0));
+            }
+
+            return words;
+        }
+
+        private async Task<string> GetHintAsync(SqliteConnection connection, string type)
+        {
+            var command = connection.CreateCommand();
+            command.CommandText = "SELECT Hint FROM WordCategories WHERE Type = $type";
+            command.Parameters.AddWithValue("$type", type);
+
+            return (string)await command.ExecuteScalarAsync();
+        }
+
+        private void LogRequest(string type, int length, string difficulty, string result)
+        {
+            var logMessage = $"{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss} | Type: {type}, Length: {length}, Difficulty: {difficulty} | Result: {result}";
+            File.AppendAllText(_logFilePath, logMessage + Environment.NewLine);
         }
     }
 
     public class WordResponse
     {
-        public string Text { get; set; }
-        public string Theme { get; set; }
-        public string Hint { get; set; }
+        public string WordText { get; set; } // The word text
+        public string WordTheme { get; set; } // The word theme
+        public string WordHint { get; set; } // Hint for the word
     }
 }

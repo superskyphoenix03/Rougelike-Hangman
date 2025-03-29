@@ -34,18 +34,6 @@ C:\Users\super\source\repos\WordGeneratorAPI\obj\Debug\net8.0\refint\WordGenerat
 C:\Users\super\source\repos\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.pdb
 C:\Users\super\source\repos\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.genruntimeconfig.cache
 C:\Users\super\source\repos\WordGeneratorAPI\obj\Debug\net8.0\ref\WordGeneratorAPI.dll
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\appsettings.json
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\WordGeneratorAPI.staticwebassets.endpoints.json
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\WordGeneratorAPI.exe
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\WordGeneratorAPI.deps.json
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\WordGeneratorAPI.runtimeconfig.json
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\WordGeneratorAPI.dll
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\WordGeneratorAPI.pdb
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.csproj.AssemblyReference.cache
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.AssemblyInfoInputs.cache
@@ -54,20 +42,3 @@ C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.sourcelink.json
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\scopedcss\bundle\WordGeneratorAPI.styles.css
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets\msbuild.WordGeneratorAPI.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets\msbuild.WordGeneratorAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets\msbuild.build.WordGeneratorAPI.props
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WordGeneratorAPI.props
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WordGeneratorAPI.props
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGene.3185C09B.Up2Date
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.dll
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\refint\WordGeneratorAPI.dll
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.pdb
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.genruntimeconfig.cache
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\ref\WordGeneratorAPI.dll
-C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
