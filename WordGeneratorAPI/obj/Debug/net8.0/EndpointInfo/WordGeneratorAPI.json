@@ -635,15 +635,15 @@
       "WordResponse": {
         "type": "object",
         "properties": {
-          "text": {
+          "wordText": {
             "type": "string",
             "nullable": true
           },
-          "theme": {
+          "wordTheme": {
             "type": "string",
             "nullable": true
           },
-          "hint": {
+          "wordHint": {
             "type": "string",
             "nullable": true
           }

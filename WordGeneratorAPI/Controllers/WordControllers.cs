@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.Sqlite; // Import SQLite namespace
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,13 +12,6 @@ namespace WordGeneratorAPI.Controllers
     public class WordController : ControllerBase
     {
         private readonly string _connectionString = "Data Source=WordsDatabase.db";
-        private readonly string _logFilePath = "Logs/WordRequests.log";
-
-        public WordController()
-        {
-            // Ensure the log directory exists
-            Directory.CreateDirectory(Path.GetDirectoryName(_logFilePath));
-        }
 
         [HttpGet]
         public async Task<ActionResult<WordResponse>> GetRandomWord([FromQuery] string type = "common", [FromQuery] int length = 3, [FromQuery] string difficulty = "easy")
@@ -33,7 +25,6 @@ namespace WordGeneratorAPI.Controllers
                 var categoryExists = await CheckCategoryExistsAsync(connection, type);
                 if (!categoryExists)
                 {
-                    LogRequest(type, length, difficulty, "Invalid word type");
                     return BadRequest("Invalid word type. Please use a valid category.");
                 }
 
@@ -42,7 +33,6 @@ namespace WordGeneratorAPI.Controllers
 
                 if (words.Count == 0)
                 {
-                    LogRequest(type, length, difficulty, "No words found");
                     return NotFound("No words found with the specified criteria.");
                 }
 
@@ -50,13 +40,17 @@ namespace WordGeneratorAPI.Controllers
                 var randomWord = words[random.Next(words.Count)];
                 var hint = await GetHintAsync(connection, type);
 
-                LogRequest(type, length, difficulty, "Success");
                 return Ok(new WordResponse { WordText = randomWord, WordTheme = type, WordHint = hint });
+            }
+            catch (SqliteException ex)
+            {
+                // Log the SQLite-specific exception
+                return StatusCode(500, $"SQLite Exception: {ex.Message}");
             }
             catch (Exception ex)
             {
-                LogRequest(type, length, difficulty, $"Error: {ex.Message}");
-                return StatusCode(500, "Internal server error");
+                // Log the general exception
+                return StatusCode(500, $"Exception: {ex.Message}");
             }
         }
 
@@ -97,12 +91,6 @@ namespace WordGeneratorAPI.Controllers
             command.Parameters.AddWithValue("$type", type);
 
             return (string)await command.ExecuteScalarAsync();
-        }
-
-        private void LogRequest(string type, int length, string difficulty, string result)
-        {
-            var logMessage = $"{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss} | Type: {type}, Length: {length}, Difficulty: {difficulty} | Result: {result}";
-            File.AppendAllText(_logFilePath, logMessage + Environment.NewLine);
         }
     }
 

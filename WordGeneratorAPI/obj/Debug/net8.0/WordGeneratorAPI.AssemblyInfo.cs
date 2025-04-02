@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WordGeneratorAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc88546cf8a44af67148e45f7796e226d20761a6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+66d17364b615550f00ba96fcdf2c6d6b54df6614")]
 [assembly: System.Reflection.AssemblyProductAttribute("WordGeneratorAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WordGeneratorAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

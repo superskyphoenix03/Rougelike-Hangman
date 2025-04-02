@@ -1,6 +1,10 @@
 // These are the web addresses (URLs) where we get or send data for different parts of the game.
 const apiUrl = "http://localhost:5127/Word";
-
+const scoreApiUrl = "http://localhost:5127/api/scores";
+const leaderboardApiUrl = "http://localhost:5127/api/leaderboard";
+const achievementsApiUrl = "http://localhost:5127/api/game/achievements";
+const dailyChallengesApiUrl = "http://localhost:5127/api/game/daily-challenges";
+const gameReplaysApiUrl = "http://localhost:5127/api/game/game-replays";
 
 // These variables store important information for the game, like the current word and player's score.
 let selectedWord = ""; // The word the player is trying to guess
@@ -43,21 +47,26 @@ const elements = {
 
 // These are functions to interact with the game's backend.
 const apiEndpoints = {
-// Fetch a random word from the server with improved error handling and loading indicator.
-fetchRandomWord: async () => {
+// Fetch a random word from the server with error handling and loading indicator.
+fetchRandomWord : async () => {
     try {
         // Show loading indicator
         elements.message.innerHTML = "Loading...";
 
         const response = await fetch(`${apiUrl}?difficulty=${difficultyLevel}`);
-        
-        // Check if the response is OK (status code 200-299)
+
+        // Check if the response is OK
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-        const word = await response.json();
+        let word;
+        try {
+            word = await response.json();
+        } catch (jsonError) {
+            throw new Error("Failed to parse JSON response");
+        }
 
         // Validate the response structure
-        if (!word.text || !word.theme) {
+        if (!word || typeof word !== "object" || !word.text || !word.theme) {
             throw new Error("Invalid response format");
         }
 
@@ -67,15 +76,18 @@ fetchRandomWord: async () => {
         // Clear loading message
         elements.message.innerHTML = "";
     } catch (error) {
-        // Provide more specific error messages based on the error type
         if (error.message.startsWith("HTTP error")) {
             elements.message.innerHTML = "Server error: " + error.message;
         } else if (error.message === "Invalid response format") {
             elements.message.innerHTML = "Received invalid data from the server.";
+        } else if (error.message === "Failed to parse JSON response") {
+            elements.message.innerHTML = "Error parsing server response.";
         } else {
             elements.message.innerHTML = "Network error: Failed to fetch the word. Please check your connection and try again.";
         }
     }
+
+
 },
     // Submit the player's score to the server.
     submitScore: async (scoreData) => {
