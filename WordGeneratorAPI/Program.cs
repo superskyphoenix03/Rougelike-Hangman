@@ -16,5 +16,7 @@ namespace RandomWordGeneratorApi
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
     }
+
 }

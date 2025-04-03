@@ -114,3 +114,4 @@ C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.pdb
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\WordGeneratorAPI.genruntimeconfig.cache
 C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\ref\WordGeneratorAPI.dll
+C:\Users\super\source\New Repos\Rougelike-Hangman\WordGeneratorAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

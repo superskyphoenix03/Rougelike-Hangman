@@ -1,5 +1,5 @@
 // These are the web addresses (URLs) where we get or send data for different parts of the game.
-const apiUrl = "http://localhost:5127/Word";
+const apiUrl = "http://localhost:5127/word";
 const scoreApiUrl = "http://localhost:5127/api/scores";
 const leaderboardApiUrl = "http://localhost:5127/api/leaderboard";
 const achievementsApiUrl = "http://localhost:5127/api/game/achievements";
@@ -16,7 +16,7 @@ let hp = 50; // Player's health points
 let maxHp = 50; // Maximum health points
 let lives = 3; // Number of lives the player has
 let wordCoins = 0; // Coins the player earns from guessing words
-let difficultyLevel = "common"; // The difficulty level of the game
+let difficultyLevel = "easy"; // The difficulty level of the game
 let completedWords = 0; // Number of words the player has guessed correctly
 let timer = 60; // Time left to guess the word
 let timerInterval; // Variable to store the timer interval
@@ -47,48 +47,26 @@ const elements = {
 
 // These are functions to interact with the game's backend.
 const apiEndpoints = {
-// Fetch a random word from the server with error handling and loading indicator.
-fetchRandomWord : async () => {
-    try {
-        // Show loading indicator
-        elements.message.innerHTML = "Loading...";
+    // Fetch a random word from the server with error handling and loading indicator.
+        fetchRandomWord: async () => {
+            try {
+                const response = await fetch(`${apiUrl}?difficulty=${difficultyLevel}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const word = await response.json();
+                console.log("Server response:", word); // Log the response
+                if (!word.wordText || !word.wordTheme || !word.wordHint) {
+                    throw new Error('Invalid response format');
+                }
+                setNextWord(word);
+            } catch (error) {
+                console.error("Error fetching random word:", error); // Log the error
+                elements.message.innerHTML = error.message;
+            }
+    
+    },
 
-        const response = await fetch(`${apiUrl}?difficulty=${difficultyLevel}`);
-
-        // Check if the response is OK
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-        let word;
-        try {
-            word = await response.json();
-        } catch (jsonError) {
-            throw new Error("Failed to parse JSON response");
-        }
-
-        // Validate the response structure
-        if (!word || typeof word !== "object" || !word.text || !word.theme) {
-            throw new Error("Invalid response format");
-        }
-
-        nextWord = word.text.toLowerCase();
-        nextTheme = word.theme;
-
-        // Clear loading message
-        elements.message.innerHTML = "";
-    } catch (error) {
-        if (error.message.startsWith("HTTP error")) {
-            elements.message.innerHTML = "Server error: " + error.message;
-        } else if (error.message === "Invalid response format") {
-            elements.message.innerHTML = "Received invalid data from the server.";
-        } else if (error.message === "Failed to parse JSON response") {
-            elements.message.innerHTML = "Error parsing server response.";
-        } else {
-            elements.message.innerHTML = "Network error: Failed to fetch the word. Please check your connection and try again.";
-        }
-    }
-
-
-},
     // Submit the player's score to the server.
     submitScore: async (scoreData) => {
         try {
@@ -97,20 +75,29 @@ fetchRandomWord : async () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(scoreData)
             });
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            if (!response.ok) {
+                console.error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const data = await response.json();
+            console.log("Server response:", data);
             elements.leaderboardForm.style.display = "none";
             apiEndpoints.displayLeaderboard();
         } catch (error) {
             console.error("Failed to submit score:", error);
         }
     },
+
     // Display the leaderboard with high scores.
     displayLeaderboard: async () => {
         try {
             const response = await fetch(leaderboardApiUrl);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            if (!response.ok) {
+                console.error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const data = await response.json();
+            console.log("Server response:", data);
             elements.leaderboardTableBody.innerHTML = data.map((entry, index) => `
                 <tr>
                     <td>${index + 1}</td>
@@ -126,32 +113,47 @@ fetchRandomWord : async () => {
             console.error("Failed to fetch leaderboard:", error);
         }
     },
+
     // Fetch the player's achievements from the server.
     fetchAchievements: async () => {
         try {
             const response = await fetch(achievementsApiUrl);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            console.log(await response.json());
+            if (!response.ok) {
+                console.error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log("Server response:", data);
         } catch (error) {
             console.error("Failed to fetch achievements:", error);
         }
     },
+
     // Fetch the daily challenges from the server.
     fetchDailyChallenges: async () => {
         try {
             const response = await fetch(dailyChallengesApiUrl);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            console.log(await response.json());
+            if (!response.ok) {
+                console.error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log("Server response:", data);
         } catch (error) {
             console.error("Failed to fetch daily challenges:", error);
         }
     },
+
     // Fetch game replays from the server.
     fetchGameReplays: async () => {
         try {
             const response = await fetch(gameReplaysApiUrl);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            console.log(await response.json());
+            if (!response.ok) {
+                console.error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log("Server response:", data);
         } catch (error) {
             console.error("Failed to fetch game replays:", error);
         }
@@ -213,9 +215,9 @@ const hideShop = () => {
 // This function updates the game difficulty based on the number of completed words.
 const updateDifficulty = () => {
     completedWords++;
-    if (difficultyLevel === "common" && completedWords >= 3) difficultyLevel = "easy";
-    else if (difficultyLevel === "easy" && completedWords >= 6) difficultyLevel = "medium";
-    else if (difficultyLevel === "medium" && completedWords >= 9) difficultyLevel = "hard";
+    if (difficultyLevel === "easy" && completedWords >= 3) difficultyLevel = "medium";
+    else if (difficultyLevel === "medium" && completedWords >= 6) difficultyLevel = "hard";
+    else if (difficultyLevel === "hard" && completedWords >= 9) difficultyLevel = "hard";
     updateDisplay();
 };
 
@@ -349,7 +351,7 @@ elements.guessInput.addEventListener("keypress", (event) => {
 elements.tryAgainButton.addEventListener("click", () => {
     hp = maxHp;
     wordCoins = 0;
-    difficultyLevel = "common";
+    difficultyLevel = "easy";
     completedWords = 0;
     guessedLetters = [];
     lives = 3;
@@ -383,6 +385,11 @@ elements.continueButton.addEventListener("click", () => {
 });
 
 // Fetch a random word and prepare the game when the page loads.
+const setNextWord = (word) => {
+    nextWord = word.wordText.toLowerCase();
+    nextTheme = word.wordTheme;
+    nextHint = word.wordHint;
+};
 apiEndpoints.fetchRandomWord();
 apiEndpoints.fetchAchievements();
 apiEndpoints.fetchDailyChallenges();

@@ -6,8 +6,6 @@ Thank you for your understanding and support during this time. Please let me kno
 Sincerely,
 Skyler
 
-Got it—thanks for clarifying! Here's the updated README file reflecting the changes to your project:
-
 ---
 
 # Roguelike Hangman Game
