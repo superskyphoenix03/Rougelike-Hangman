@@ -1,15 +1,4 @@
-Dear [Team or Recipient Name at Code: You],
-I hope this note finds you well. I wanted to take a moment to explain the delay in completing my project. Over the past few weeks, several of my family members underwent back-to-back surgeries, requiring significant care and support during their recovery. I also had to step in to babysit, ensuring their little ones were cared for while they healed.
-Unfortunately, these unforeseen circumstances left me unable to dedicate the time and focus needed to complete the project on schedule. I tried my best to get it in on time, however despite my best efforts it will be slightly late,
-I truly value the opportunity to work on this and am committed to finishing it as soon as possible.
-Thank you for your understanding and support during this time. Please let me know if there's anything further I need to provide or arrange moving forward.
-Sincerely,
-Skyler
-
----
-
-# Roguelike Hangman Game
-
+//side note: I have been attempting to update this but git is giving me so many problems, there is a newer updated version of this but I can't seem to publish it.
 Welcome to the Roguelike Hangman Game, a reimagining of the classic word puzzle game that combines traditional gameplay with roguelike principles. 
 This project is built using a custom C# API for word and score generation, alongside a JavaScript-based frontend. 
 Its aim is to deliver an engaginging fun gameplay to entertain the player as much as possible.
